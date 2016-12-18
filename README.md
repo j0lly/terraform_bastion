@@ -24,3 +24,4 @@ module "bastion" {
 
 - conditional dns name
 - remove all those provisioners lines
+- support account creation filtered by groups (admins) for policy document
