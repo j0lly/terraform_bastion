@@ -5,7 +5,7 @@ resource "aws_iam_instance_profile" "bastion_profile" {
 
 resource "aws_iam_role" "role" {
     name = "bastion_role"
-    assume_role_policy = "${file("templates/role.json")}"}
+    assume_role_policy = "${file("${path.module}/templates/role.json")}"}
 
 resource "aws_iam_role_policy" "bastion" {
     name = "bastion"

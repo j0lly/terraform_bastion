@@ -1,5 +1,5 @@
 data "template_file" "policy" {
-    template = "${file("templates/policy.json")}"
+    template = "${file("${path.module}/templates/policy.json")}"
     vars {
         user_account = "${var.user_account}"
     }
@@ -51,15 +51,15 @@ resource "aws_instance" "bastion" {
 
   # Import SSH poor man syncronizer
   provisioner "file" {
-    source = "files/installer.sh"
+    source = "${path.module}/files/installer.sh"
     destination = "/home/ec2-user/installer.sh"
   }
   provisioner "file" {
-    source = "files/authorized_keys_command.sh"
+    source = "${path.module}/files/authorized_keys_command.sh"
     destination = "/home/ec2-user/authorized_keys_command.sh"
   }
   provisioner "file" {
-    source = "files/import_users.sh"
+    source = "${path.module}/files/import_users.sh"
     destination = "/home/ec2-user/import_users.sh"
   }
   provisioner "remote-exec" {
